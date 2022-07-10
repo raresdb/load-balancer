@@ -1,0 +1,40 @@
+#Butilca Rares 315CA
+
+Implementation of a load balancer that can be used when multiple servers can be used for storing
+data.
+The data is represented simply by key and value for the simplicity of this program.
+
+Init_load_balancer
+	-> Memory is being allocated and variables initialised.
+
+Loader_store
+	-> The position of the server is found through direct search, each time the
+comparison being made with the aid of a hash function. Afterwards, the server id
+is searched into the server list hashtable, by taking into consideration the
+functions that create labels. The last step is adding, into the hashtable of the
+server, the new item.
+
+Loader_retrieve
+	-> The process is similar, only the last step differing which is to
+retrieve the product information from the hashtable of its server.
+
+Loader_add_server
+	-> The position for each label(instance of the server), is being found
+same as above. At the same time, the algorithm memorises the neighbours
+from which the new server might take some products and after adding the
+labels, these neighbours lose all product information. This information
+is being redistributed in their new positions.
+
+Loader_remove_server
+	-> The process is similar, but it doesn't require the neighbours to be
+memorised, since the only products that need redistributing will be stored
+in the current server. The memory used to store the server will be erased
+at the end of the process.
+
+Free_load_balancer
+	-> First the servers are being deallocated, then the load balancer itself.
+
+
+
+
+
